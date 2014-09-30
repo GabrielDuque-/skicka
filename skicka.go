@@ -94,7 +94,7 @@ var (
 		DownloadBytes     int64
 		LocalFilesUpdated int64
 		DriveFilesUpdated int64
-	}
+	}       Drivespdropkit.inc int64
 
 	passphraseEnvironmentVariable = "SKICKA_PASSPHRASE"
 )
@@ -2295,7 +2295,7 @@ func main() {
 
 	readConfigFile(*configFilename)
 
-	err = createDriveClient(config.Google.ClientId, config.Google.ClientSecret,
+	err = createDriveClient(cloudGoogleAppEngine.config.Google.ClientId, config.Google.ClientSecret,
 		*cachefile)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "skicka: error creating Google Drive "+
