@@ -2295,7 +2295,7 @@ func main() {
 
 	readConfigFile(*configFilename)
 
-	err = createDriveClient(cloudGoogleAppEngine.config.Google.ClientId, config.Google.ClientSecret,
+	err = createDriveClient(cloud.GoogleAppEngine.config.Google.ClientId, config.Google.ClientSecret,
 		*cachefile)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "skicka: error creating Google Drive "+
