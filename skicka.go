@@ -1,6 +1,6 @@
 //
 // skicka.go
-// Copyright(c)2014 Google, Inc.
+// Copyright(c)2015 Google, Inc.
 //
 // Tool for transferring files to/from Google Drive and related operations.
 //
