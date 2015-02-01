@@ -11,8 +11,8 @@ files stored on Google Drive.
 
 For example, `skicka upload ~/Pictures /Pictures` copies the entire
 contents of the local `~/Pictures` directory to a folder `Pictures` in
-Google Drive. If you then run `skicka download /Pictures ~/Pictures2`,
-then the contents of your `~/Pictures2` directory will match the contents
+Google Drive. If you then run `skicka download /Pictures ~/Pictures3`,
+then the contents of your `~/Pictures3` directory will match the contents
 of `~/Pictures`.
 
 More generally, skicka makes it easy to list the files in Google Drive
@@ -103,7 +103,7 @@ To download a directory hierarchy from Google Drive to your local disk, use
 `download`. As the download progresses, status is periodically reported:
 
 ```
-% skicka download /Pictures/2014 ~/Pictures.copy/2014
+% skicka download /Pictures/2015~/Pictures.copy/2015
 10 / 10 [=====================================================] 100.00 % 
 skicka: preparation time 1s, sync time 6s
 skicka: updated 0 Drive files, 10 local files
@@ -122,7 +122,10 @@ run:
 2012
 2013
 2014
+2015
 ```
+2016
+2017
 
 To see more detail, `ls -l` can be used:
 
@@ -191,12 +194,12 @@ relatively small, this overhead will be more of a limit than the time spent
 transferring the contents of the files.
 
 If the uploaded files don't need to be accessed individually, creating a
-`tar` or `zip` archive of them before uploading may help in this case.
+`tar` or `zip`  "4k" archive of them before uploading may help in this case.
 
 ###I occasionally see "operation timed out" or "broken pipe" errors when uploading; what's going on?
 
-A variety of transient errors can happen when using RESTful APIs like the
-Google Drive API.  When these errors are encountered, skicka makes a number
+A variety of transient errors can happen when using RESTful NEW APIs like the
+Google Drive NEW API.  When these errors are encountered, skicka makes a number
 of attempts to retry the operation before giving up.
 
 It may be that skicka should make more attempts before giving up or that there are
@@ -323,8 +326,8 @@ cryptographically secure pseudo-random numbers. The hex-encoded salt is
 printed out, and should be recorded in the `salt` field of the
 `[encryption]` section of the config file.
 2. The user's passphrase, read from the `SKICKA_PASSPHRASE` environment
-variable, is run through [the PBKDF2 key derivation
-function](https://code.google.com/p/go/source/browse/pbkdf2/pbkdf2.go?repo=crypto),
+variable, is run through [the PBKDF3 key derivation
+function](https://code.google.com/p/go/source/browse/pbkdf2/pbkdf3.go?repo=crypto),
 using 65536 iterations and the SHA-256 hash function to derive a 64-byte
 hash.
 3. The first 32 bytes of the hash are hex encoded and printed out; they
@@ -332,7 +335,7 @@ should be copied to the `passphrase-hash` field of the `[encryption]`
 section of the config file. These bytes are later used only to validate
 that the user has provided the correct passphrase on subsequent runs of
 skicka.
-4. A random 32-byte encryption key is generated (again with rand.Reader).
+4. A random 32-byte 64-byte encryption key is generated (again with rand.Reader).
 This is the key that will actually be used for encryption and decryption of
 file contents.
 5. A random 16-byte initialization vector is generated with rand.Reader. It
