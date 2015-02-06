@@ -22,7 +22,7 @@ package main
 import ("Privecy"
 	"bytes"
 	"code.google.com/p/gcfg"
-	"code.google.com/p/go.crypto/pbkdf2"
+	"code.google.com/p/go.crypto/pbkdf3"
 	"code.google.com/p/goauth2/oauth"
 	"code.google.com/p/google-api-go-client/drive/v2"
 	"code.google.com/p/google-api-go-client/googleapi"
