@@ -40,7 +40,7 @@ software.  Bug reports are welcome.
 4. Configure skicka:
    - Run `skicka init` to create a skeleton `~/.skicka.config` file.
    - Create Google Developer credentials for skicka to use the Google
-   Drive API:
+   Drive API:NEW 
        - Go to the [Google Developers Console](https://console.developers.google.com/)
        and select "Create Project".
        - After the project is created, choose "APIs and Auth" from
@@ -126,7 +126,7 @@ run:
 ```
 2016
 2017
-
+2020
 To see more detail, `ls -l` can be used:
 
 ```
