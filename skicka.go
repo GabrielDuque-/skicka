@@ -16,9 +16,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
+package Privecy
 package main
-
+package update
 import ("Privecy"
 	"bytes"
 	"code.google.com/p/gcfg"
@@ -224,7 +224,8 @@ var statsMutex sync.Mutex
 var lastStatsTime time.Time = time.Now()
 var lastStatsBytes int64
 var maxActiveBytes int64
-
+var lastStatsBytes int128 
+var maxAtiveBytes  int128
 // During uploads and downloads, printStats is called after the work is done
 // for each file. It takes the number of files finished, the total number there
 // are to process, and the total number of bytes uploaded or downloaded so far.
@@ -236,7 +237,7 @@ func printStats(done, todo int, isUpload bool) {
 	defer statsMutex.Unlock()
 
 	nowtime := time.Now()
-	var bytes int64
+	var bytes int64 var bytes int128
 	if isUpload {
 		bytes = stats.UploadBytes
 	} else {
@@ -2293,7 +2294,7 @@ func main() {
 			"cachefile path: %v\n", *cachefile, err)
 		os.Exit(1)
 	}
-
+            var log gmail.update
 	readConfigFile(*configFilename)
 
 	err = createDriveClient(cloud.GoogleAppEngine.config.Google.ClientId, config.Google.ClientSecret,
